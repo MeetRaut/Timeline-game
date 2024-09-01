@@ -46,17 +46,23 @@ function Timeline() {
   };
 
   const createCard = (event) => (
-    <div className="card" draggable="true" onDragStart={dragStart} onDragEnd={dragEnd} data-date={event.date}>
+    <div
+      className="card"
+      draggable="true"
+      onDragStart={dragStart}
+      onDragEnd={dragEnd}
+      data-date={event.date}
+    >
       <div className="name">{event.event}</div>
       <div className="image">
         <img src={event.image} alt="Event" className="unselectable" />
       </div>
       <div className="description">{event.description}</div>
-      <div className="date" style={{ display: 'block' }}>{event.date}</div>
+      <div className="date" style={{ display: 'none' }}>{event.date}</div>
       <div className="back">
         <p className="information">{event.additional_info}</p>
         <div className="wikipedia">
-          <a href="https://github.com/Myst-Blazeio/Historia-Game.github.io" target="_blank" rel="noopener noreferrer">Wikipedia Link</a>
+          <a href={event.wikipedia_link} target="_blank" rel="noopener noreferrer">Wikipedia Link</a>
         </div>
       </div>
     </div>
@@ -85,16 +91,26 @@ function Timeline() {
     e.target.classList.remove('dragging');
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = (e, index) => {
     e.preventDefault();
     const date = e.dataTransfer.getData('text/plain');
-    const card = timeline.find(card => card.props.children[3].props.children === date); // Correctly find the card by its date
+    const card = currentCard;
 
-    if (checkOrder([...timeline, card])) {
-      setTimeline([...timeline, card]);
+    const newTimeline = [...timeline];
+    newTimeline.splice(index, 0, card);
+
+    if (checkOrder(newTimeline)) {
+      setTimeline(newTimeline);
       setCurrentCard(null);
       setCurrentStreak(currentStreak + 1);
       setLongestStreak(Math.max(currentStreak + 1, longestStreak));
+
+      // Show the year of the event in the dropped card
+      const droppedCard = document.querySelector(`.card.dragging`);
+      if (droppedCard) {
+        droppedCard.querySelector('.date').style.display = 'block';
+      }
+
       if (timeline.length === events.length - 1) {
         setMessage('Congratulations! You\'ve placed all cards correctly.');
         gameOver();
@@ -107,24 +123,41 @@ function Timeline() {
     }
   };
 
-  const checkOrder = (timeline) => {
-    for (let i = 0; i < timeline.length - 1; i++) {
-      const date1 = parseInt(timeline[i].props.date);
-      const date2 = parseInt(timeline[i + 1].props.date);
-      if (date1 > date2) {
-        return false;
-      }
+  const checkOrder = () => {
+  let isCorrectOrder = true;
+
+  for (let i = 0; i < timeline.length - 1; i++) {
+    const date1 = parseInt(timeline[i].props['data-date']);
+    const date2 = parseInt(timeline[i + 1].props['data-date']);
+    if (date1 > date2) {
+      isCorrectOrder = false;
+      break;
+    }
+  }
+
+  if (isCorrectOrder) {
+    const newStreak = currentStreak + 1;
+    setCurrentStreak(newStreak);
+    if (newStreak > longestStreak) {
+      setLongestStreak(newStreak);
     }
     return true;
-  };
+  } else {
+    return false;
+  }
+};
+
 
   const gameOver = () => {
     setMessage(`Game Over! Longest streak: ${longestStreak}`);
-    // Reset the game or provide option to restart
   };
 
   const refreshPage = () => {
     initializeGame(events);
+  };
+
+  const allowDrop = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -134,14 +167,13 @@ function Timeline() {
         <div id="current-card-container">
           {currentCard}
         </div>
-        <div className="temp" style={{ display: 'flex' }}>
-          <button id="next-card-button" disabled>Load Next Card</button>
-          <div className="game-rules-container">
-            <button id="game-rules-button" onClick={() => alert('Game Rules: Place cards in chronological order!')}>Game Rules</button>
-          </div>
-        </div>
         <div id="timeline">
-          {timeline}
+          {timeline.map((card, index) => (
+            <div key={index} className="timeline-slot" onDrop={(e) => handleDrop(e, index)} onDragOver={allowDrop}>
+              {card}
+            </div>
+          ))}
+          <div className="timeline-slot empty-slot" onDrop={(e) => handleDrop(e, timeline.length)} onDragOver={allowDrop}></div>
         </div>
         <div id="play-again-button" onClick={refreshPage}>Play Again</div>
         <div id="message">{message}</div>
