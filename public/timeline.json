@@ -1,0 +1,58 @@
+[
+    { 
+        "event": "Invention of the Wheel", 
+        "date": -3500, 
+        "image": "https://www.historyanswers.co.uk/wp-content/uploads/2014/04/All-About-History-wheel-e1398790717910.jpg", 
+        "description": "The invention of the wheel, a key technological advancement.",
+        "additional_info": "This pivotal invention greatly impacted transportation, enabling the development of carts, chariots, and later, vehicles, revolutionizing trade and mobility."
+    },
+    { 
+        "event": "Discovery of Fire", 
+        "date": -100000, 
+        "image": "https://fubini.swarthmore.edu/~ENVS2/S2007/rmckenn1/gif/cavemenfire.jpg", 
+        "description": "The discovery and control of fire.",
+        "additional_info": "Fire provided warmth, protection from predators, and a method to cook food, fundamentally changing human lifestyle, health, and survival."
+    },
+    { 
+        "event": "First Manned Moon Landing", 
+        "date": 1969, 
+        "image": "https://www.historyhit.com/app/uploads/2020/07/800px-Apollo_11_Crew-1.jpg", 
+        "description": "Neil Armstrong and Buzz Aldrin land on the moon.",
+        "additional_info": "The Apollo 11 mission, a major milestone in space exploration, showcased human ingenuity and marked the beginning of lunar exploration."
+    },
+    { 
+        "event": "Fall of the Berlin Wall", 
+        "date": 1989, 
+        "image": "https://assets.pewresearch.org/wp-content/uploads/sites/12/2014/10/FT_14.10.15_berlinWallPhoto.jpg", 
+        "description": "The fall of the Berlin Wall marking the end of the Cold War.",
+        "additional_info": "This event symbolized the reunification of Germany and the collapse of communist regimes in Eastern Europe, leading to greater political freedom."
+    },
+    { 
+        "event": "Start of World War I", 
+        "date": 1914, 
+        "image": "https://assets.editorial.aetnd.com/uploads/2018/08/outbreak-of-world-war-i-gettyimages-506127736.jpg", 
+        "description": "The beginning of World War I.",
+        "additional_info": "This global conflict, lasting until 1918, involved many world powers and resulted in significant political, social, and economic changes."
+    },
+    { 
+        "event": "Printing Press Invented", 
+        "date": 1440, 
+        "image": "https://www.grunge.com/img/gallery/how-the-printing-press-was-first-invented/intro-1645639217.jpg", 
+        "description": "Johannes Gutenberg invents the printing press.",
+        "additional_info": "Gutenberg's press revolutionized the spread of knowledge by making books and information more accessible, sparking the Renaissance and scientific revolution."
+    },
+    { 
+        "event": "Signing of the Declaration of Independence", 
+        "date": 1776, 
+        "image": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Declaration_of_Independence_%281819%29%2C_by_John_Trumbull.jpg", 
+        "description": "The United States Declaration of Independence is signed.",
+        "additional_info": "This document, declaring the American colonies' independence from British rule, laid the foundation for the United States' democratic government."
+    },
+    { 
+        "event": "French Revolution Begins", 
+        "date": 1789, 
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Anonymous_-_Prise_de_la_Bastille.jpg/1200px-Anonymous_-_Prise_de_la_Bastille.jpg", 
+        "description": "The French Revolution starts.",
+        "additional_info": "The revolution led to the rise of modern democracies and the end of absolute monarchies in France, profoundly influencing global political thought."
+    }
+]

@@ -1,0 +1,317 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    width: 100vw;
+    background-color: #e8cce5;
+}
+
+#game-container {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    justify-content: center;
+}
+
+#timeline {
+    display: flex;
+    /* margin-bottom: 20px; */
+    padding: 5px;
+    background-color: #caf4ff;
+    border: 1px solid #9c765f;
+    border-radius: 10px;
+    min-height: 300px;
+    width: 100%;
+    /* align-items: center; */
+    justify-content: stretch;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+#current-card-container {
+    display: flex;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #eae2b4;
+    border: 2px dashed #6a4619;
+    border-radius: 4px;
+    width: 230px;
+    min-height: 200px;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+    margin: 5px;
+    padding: 10px;
+    min-height: 100px;
+    min-width: 200px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8e3f7;
+    cursor: grab;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+    
+}
+
+.card .name {
+    text-decoration: underline black;
+    font-style: italic;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #000000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+/* .image{
+    color:red;
+    width: 100%;
+    height: 100%;
+} */
+
+.unselectable {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    width: 150px;
+    height: 80px;
+}
+
+.card img {
+    /* max-height: 100%; */
+    /* max-width: 100%; */
+    object-fit: cover;
+    margin: auto;
+    border: 2px solid rgb(255, 0, 0);
+}
+
+.card .description {
+    font-size: 14px;
+    text-align: center;
+    font-weight: lighter;
+    border: 1px solid black;
+    margin-top: 5px;
+    /* margin: auto; */
+    background-color: #a7def5;
+    border-radius: 3px;
+    padding: 3px;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.card .date {
+    display: none;
+    border-radius: 5px;
+    border: 2px solid green;
+    background-color: #2aca4f;
+    padding: 10px;
+    color: #020202;
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+    margin-top: auto;
+}
+
+/* for the display message */
+#message {
+    margin-top: 20px;
+    font-size: 30px;
+    font-style: oblique;
+    font-weight: bolder;
+}
+
+#next-card-button {
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#next-card-button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+#game-rules-button{
+    margin-bottom: 5px;
+        padding: 10px 15px;
+        background-color: #000000;
+        color: #ffffff;
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 3px;
+        cursor: pointer;
+}
+
+.game-rules-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 2px;
+}
+
+@media only screen and (max-width: 725px) {
+
+    .game-rules-tooltip {
+            display: none;
+            min-width: 200px;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: left;
+            border-radius: 5px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        .game-rules-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: #f9f9f9 transparent transparent transparent;
+        }
+
+    h3,#rules-content{
+        color: rgb(0, 0, 0);
+        }
+}
+@media only screen and (min-width: 725px) {
+
+.game-rules-tooltip {
+        display: none;
+        min-width: 200px;
+        background-color: #f9f9f9;
+        color: #333;
+        text-align: left;
+        border-radius: 5px;
+        padding: 10px;
+        position: absolute;
+        z-index: 1;
+        top: 30%;
+        left: 110%;
+        transform: translateY(-50%);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .game-rules-tooltip::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%) translateX(-100%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent #f9f9f9 transparent transparent;
+    }
+
+    h3,#rules-content{
+        color: rgb(0, 0, 0);
+    }
+    
+}
+
+#play-again-button{
+    display: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #000000;
+        color: #ffffff;
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 3px;
+        cursor: pointer;
+}
+
+.card.dragging {
+    opacity: 0.7;
+    border: 2px dashed #000;
+}
+
+.card.correct {
+    border: 2px solid green;
+    background-color: #e0ffe0;
+    cursor: default;
+}
+
+.card.incorrect {
+    border: 2px solid red;
+    background-color: #ffe0e0;
+}
+
+.card.flippable {
+    cursor: pointer;
+}
+
+.card .back {
+    display: none;
+    background-color: #e0ffe0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.card.incorrect .back{
+    background: #ffe0e0;
+}
+
+.card.flipped .front {
+    display: none;
+}
+
+.card.flipped .back {
+    display: block;
+}
+
+.information {
+    font-size: 15px;
+        text-align:left;
+        font-weight: lighter;
+        border: 1px solid black;
+        margin: 5px;
+        /* margin: auto; */
+        background-color: #a7def5;
+        border-radius: 3px;
+        padding: 5px;
+        color: #333;
+        height: 230px;
+}
+
+.wikipedia {
+    margin-top: auto;
+}
